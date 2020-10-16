@@ -1,5 +1,9 @@
 <?php
 include('server.php');
+if (empty($_SESSION['username'])) {
+    $_SESSION['msg'] = "You must log in first to view this paage";
+    header("location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
