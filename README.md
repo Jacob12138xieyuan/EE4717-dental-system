@@ -24,9 +24,9 @@ Go to 'http://localhost/phpmyadmin/', username is 'root', password is empty. On 
 
 ### 4. Open webpage form http://localhost/
 
-Click 'dental' folder under 'Your Projects', you should see a log in page. You can log in as normal user: username: user, password: 123 or log in as admin: username: admin, password: 123, otherwise, you can sign up as a new user. After log in as normal, you should see:
+Click 'dental' folder under 'Your Projects', you should see a log in page. You can log in as patient: username: patient, password: 123 or log in as doctor: username: doctor, password: 123, otherwise, you can sign up as a new user. After log in as normal, you should see:
 
-![4](https://user-images.githubusercontent.com/37478093/93093560-69b19700-f6d3-11ea-8f9f-747dbfd66e51.png)
+
 
 log in as admin, you should see:
-![5](https://user-images.githubusercontent.com/37478093/93093567-6ae2c400-f6d3-11ea-9d99-48c6738c16d7.png)
+
