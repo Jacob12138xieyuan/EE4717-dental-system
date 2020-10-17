@@ -11,41 +11,33 @@ if (empty($_SESSION['username'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Employer Leave System</title>
+    <title>Smile Dental Clinic</title>
+    <link rel="stylesheet" type="text/css" href="basic.css">
 </head>
 
 <body>
+
+    <!-- header  -->
     <div class="header">
-        <h1>Employer Leave System</h1>
-    </div>
-
-    <!-- welcome session  -->
-    <div class="content" style="border-radius: 0px 0px 10px 10px;">
-        <?php if (isset($_SESSION['success'])) : ?>
-
-            <div class="error success">
-                <h3>
-                    <?php
-                    echo $_SESSION['success'];
-                    //unset($_SESSION['success']);
-                    ?>
-                </h3>
-            </div>
-
-        <?php endif ?>
-
-        <?php if (isset($_SESSION['username'])) : ?>
-            <div>
-                <p style="float:left">Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-                <p style="float:right"><a href="index.php?logout='1'" style="color: red;">Log out</a></p>
-            </div>
-            <br>
-            <br>
-
-        <?php endif ?>
+        <img src="images/logo.jpg" style="height: 50px; margin-left: 40px">
+        <div class="header-right">
+            <a style="color: white;">Welcome <strong><?php echo $_SESSION['username']; ?></strong></a>
+            <a class="active" href="">My Account</a>
+            <a class="logout" href="index.php?logout='1'">Log out</a>
+        </div>
     </div>
     <br>
+
+    <!-- home page -->
+    <?php
+    $type = $_SESSION['user_type'];
+    if ($type == 'patient') {
+        include('patient_home.php');
+    }
+    ?>
     <br>
+    <br>
+
 </body>
 
 </html>
