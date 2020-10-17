@@ -8,10 +8,22 @@ body {
   background: #f8f8ff;
 }
 
+.login_header {
+  width: 30%;
+  margin: 50px auto 0px;
+  color: white;
+  background: #5f9ea0;
+  text-align: center;
+  border: 1px solid #b0c4de;
+  border-bottom: none;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px;
+}
+
 /* Style the header with a grey background and some padding */
 .header {
   overflow: hidden;
-  background-color: #5f9ea0;
+  background-color: white;
   padding: 20px 10px;
 }
 

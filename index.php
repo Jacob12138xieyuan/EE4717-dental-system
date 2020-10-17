@@ -21,8 +21,9 @@ if (empty($_SESSION['username'])) {
     <div class="header">
         <img src="images/logo.jpg" style="height: 50px; margin-left: 40px">
         <div class="header-right">
-            <a style="color: white;">Welcome <strong><?php echo $_SESSION['username']; ?></strong></a>
-            <a class="active" href="">My Account</a>
+            <a style="color: white;">Welcome, <strong><?php echo $_SESSION['username']; ?></strong></a>
+            <a class="active" href="">My Appointment</a>
+            <a class="active" style="margin-left: 15px;" href="">My Account</a>
             <a class="logout" href="index.php?logout='1'">Log out</a>
         </div>
     </div>
