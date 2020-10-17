@@ -16,21 +16,8 @@ if (empty($_SESSION['username'])) {
 </head>
 
 <body>
-
-    <!-- header  -->
-    <div class="header">
-        <img src="images/logo.jpg" style="height: 50px; margin-left: 40px">
-        <div class="header-right">
-            <a style="color: white;">Welcome, <strong><?php echo $_SESSION['username']; ?></strong></a>
-            <a class="active" href="">My Appointment</a>
-            <a class="active" style="margin-left: 15px;" href="">My Account</a>
-            <a class="logout" href="index.php?logout='1'">Log out</a>
-        </div>
-    </div>
-    <br>
-
-    <!-- home page -->
     <?php
+    include('header.php');
     $type = $_SESSION['user_type'];
     if ($type == 'patient') {
         include('patient_home.php');
