@@ -105,6 +105,18 @@ if (isset($_GET['logout'])) {
     header('location: login.php');
 }
 
+
+if (isset($_POST['submit_update'])) {
+    $username = mysqli_real_escape_string($db, $_POST['username']);
+    $email = mysqli_real_escape_string($db, $_POST['email']);
+    $phone = mysqli_real_escape_string($db, $_POST['phone']);
+    $gender = mysqli_real_escape_string($db, $_POST['gender']);
+    $address = mysqli_real_escape_string($db, $_POST['address']);
+
+    $query = "UPDATE users SET username='$username', email='$email', phone='$phone', gender='$gender', address='$address' WHERE id={$_SESSION['id']}";
+    mysqli_query($db, $query);
+}
+
 // //user submit new leave request
 // if (isset($_POST['apply'])) {
 //     //get holidays array

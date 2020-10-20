@@ -44,7 +44,7 @@
 
 <body>
     <?php
-    session_start();
+    include('server.php');
     include('header.php');
     ?>
     <h2 style="text-align: center;">My Account Information</h2>
@@ -55,6 +55,12 @@
             <img src="images/patient.png" style="width:250px">
         </div>
         <div class="column" style="margin: 0 20% 0 0;">
+            <?php
+            $user_id = $_SESSION["id"];
+            $query = "SELECT * FROM users where id=$user_id;";
+            $result = mysqli_query($db, $query);
+            $row = mysqli_fetch_array($result)
+            ?>
             <table>
                 <tr>
                     <td>
@@ -69,7 +75,7 @@
                         <h3>Email</h3>
                     </td>
                     <td>
-                        Jacob_Xie@gmail.com
+                        <?php echo $row['email']; ?>
                     </td>
                 </tr>
                 <tr>
@@ -77,7 +83,7 @@
                         <h3>Phone</h3>
                     </td>
                     <td>
-                        8888-8888
+                        <?php echo $row['phone']; ?>
                     </td>
                 </tr>
                 <tr>
@@ -85,7 +91,7 @@
                         <h3>Gender</h3>
                     </td>
                     <td>
-                        Male
+                        <?php echo $row['gender']; ?>
                     </td>
                 </tr>
                 <tr>
@@ -93,7 +99,7 @@
                         <h3>Address</h3>
                     </td>
                     <td>
-                        Regent Height 01-03
+                        <?php echo $row['address']; ?>
                     </td>
                 </tr>
 
@@ -104,39 +110,33 @@
 
     </div>
     <br>
-    <br>
-    <form id="update_form" style="display: none;" action="" method="POST">
+    <form id="update_form" style="display: none;" action="account.php" method="post">
         <div class="input-group">
             <label for="username">Username: </label>
-            <input type="text" name="username">
+            <input type="text" name="username" required>
         </div>
         <div class="input-group">
             <label for="email">Email: </label>
-            <input type="email" name="email">
+            <input type="email" name="email" required>
         </div>
         <div class="input-group">
             <label for="phone">Phone: </label>
-            <input type="text" name="phone">
+            <input type="text" name="phone" required>
         </div>
         <div class="input-group">
             <label for="gender">Gender: </label>
-            <input type="text" name="gender">
+            <input type="text" name="gender" required>
         </div>
         <div class="input-group">
             <label for="address">Address: </label>
-            <input type="text" name="address">
+            <input type="text" name="address" required>
         </div>
 
         <div style="text-align: right;">
-            <button name="cancel_update" class="btn" style="display: inline-block;background-color:red" onclick="cancel_update()"> Cancel </button>
-            <button type="submit" name="submit_update" class="btn" style="display: inline-block;"> Submit </button>
-            <!-- <button  class="btn" style="display: inline-block;margin-left:55%"> Submit </button>
-            <button type="submit" name="submit_update" class="btn" style="display: inline-block;margin-left:85%"> Submit </button> -->
+            <button onclick="cancel_update()" class="btn" style="display: inline-block;background-color:red"> Cancel </button>
+            <button type="submit" onclick="return confirm('Are you sure to submit?')" name="submit_update" class="btn" style="display: inline-block;"> Submit </button>
         </div>
-
-
     </form>
-    <br>
     <br>
 
 </body>
