@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <img src="images/logo.jpg" style="margin-left: 30px ;text-align: center;">
     <div class="container">
         <div class="login_header">
             <h2>Register</h2>
@@ -45,5 +46,6 @@
 
     </form>
 </body>
+<?php include('footer.php'); ?>
 
 </html>
