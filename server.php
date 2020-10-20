@@ -117,6 +117,19 @@ if (isset($_POST['submit_update'])) {
     mysqli_query($db, $query);
 }
 
+if (isset($_POST['submit_appointment'])) {
+    $date = mysqli_real_escape_string($db, $_POST['date']);
+    $timeslot = mysqli_real_escape_string($db, $_POST['timeslot']);
+    $description = mysqli_real_escape_string($db, $_POST['description']);
+    $patient_id = $_SESSION['id'];
+    $query = "INSERT INTO appointments (patient_id, doctor_id, appointment_date, timeslot, description) VALUES ($patient_id, 6,'$date', '$timeslot','$description');";
+    mysqli_query($db, $query);
+    $query = "UPDATE `calendar_6` SET `$timeslot`='1' WHERE `calendar_date` = '$date';";
+    echo $query;
+    mysqli_query($db, $query);
+    header('location: patient_appointment.php');
+}
+
 // //user submit new leave request
 // if (isset($_POST['apply'])) {
 //     //get holidays array
