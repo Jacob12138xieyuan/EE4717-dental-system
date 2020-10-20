@@ -101,3 +101,7 @@ form {
   border-radius: 5px;
   text-decoration: none;
 }
+
+.no_style {
+  all: revert;
+}
