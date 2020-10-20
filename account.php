@@ -99,7 +99,7 @@
 
             </table>
             <br>
-            <a id="update_account" class="btn" style="" onclick="update_account()">Update Information</a>
+            <button id="update_account" class="btn" onclick="update_account()">Update Information</button>
         </div>
 
     </div>
