@@ -17,7 +17,6 @@ if (empty($_SESSION['username'])) {
 
 <body>
     <?php
-    include('header.php');
     $type = $_SESSION['user_type'];
     if ($type == 'patient') {
         include('patient_home.php');

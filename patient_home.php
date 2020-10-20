@@ -1,12 +1,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" type="text/css" href="basic.css">
     <style>
-        * {
-            box-sizing: border-box
-        }
-
         /* Slideshow container */
         .slideshow-container {
             max-width: 1000px;
@@ -112,39 +108,121 @@
                 opacity: 1
             }
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        /* Float four columns side by side */
+        .column {
+            float: left;
+            width: 25%;
+            padding: 0 20px;
+        }
+
+        /* Remove extra left and right margins, due to padding in columns */
+        .row {
+            margin: 0 -5px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the counter cards */
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            /* this adds the "card" effect */
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+
+        .card p {
+            padding: 16px;
+        }
+
+        /* Responsive columns - one column layout (vertical) on small screens */
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- Slideshow container -->
-    <div class="slideshow-container">
+    <?php
+    include('header.php');
+    ?>
+    <div class="container">
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
 
-        <!-- Full-width images with number and caption text -->
-        <div class="mySlides fade">
-            <img src="images/image1.jpg" style="width:100%">
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <img src="images/image1.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="images/image2.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="images/image3.jpg" style="width:100%">
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
         </div>
 
-        <div class="mySlides fade">
-            <img src="images/image2.jpg" style="width:100%">
-        </div>
+        <br>
+        <h2 style="text-align: center;">Welcome to Doctor Smile Dental!</h2>
+        <br>
+        <div class="row">
+            <div class="column" style="margin-left: 13%;">
 
-        <div class="mySlides fade">
-            <img src="images/image3.jpg" style="width:100%">
-        </div>
+                <div class="card">
+                    <a href="dental_history.php"><img style="width: 100%;" src="images/history" alt=""></a>
+                    <h3>Our History</h3>
+                    <p>Our dental centre was opened in December 2009, at City Square Mall. With a built-in area of approximately 12,000 sq ft, it has 32-treatment rooms. It is fully equipped with the latest in dental technology.</p>
+                </div>
+            </div>
+            <div class="column">
 
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <div class="card">
+                    <a href="dental_services.php"><img style="width: 100%;" src="images/services" alt=""></a>
+                    <h3>Our Services</h3>
+                    <p>We provides multidisciplinary specialist care for complex dental conditions. Our services encompass oral and maxillofacial surgery, orthodontics, prosthodontics, endodontics, periodontics, and paediatric dentistry.</p>
+                </div>
+            </div>
+            <div class="column">
+
+                <div class="card">
+                    <a href="dental_doctors.php"><img style="width: 100%;" src="images/doctors" alt=""></a>
+                    <h3>Our doctors</h3>
+                    <p>To assist and facilitate our dentists in their continuous efforts in keeping abreast with the latest technology and evidence-based practice, by engaging them with workshops, seminars and conferences; and</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <br>
 
-    <!-- The dots/circles -->
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-    </div>
 </body>
+<?php include('footer.php'); ?>
 <script>
     var slideIndex = 1;
     showSlides(slideIndex);
