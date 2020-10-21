@@ -157,7 +157,12 @@ if (isset($_POST['reschedule_appointment'])) {
     
 }
 
-
+if (isset($_GET['cancel'])) {
+    $appointment_id = $_GET['cancel'];
+    $query = "DELETE FROM appointments WHERE appointment_id = $appointment_id;";
+    mysqli_query($db, $query);
+    header('location: patient_appointment.php');
+}
 // //user submit new leave request
 // if (isset($_POST['apply'])) {
 //     //get holidays array
