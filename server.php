@@ -149,7 +149,12 @@ if (isset($_POST['reschedule_appointment'])) {
     $query = "UPDATE `calendar_6` SET `$old_timeslot`='0' WHERE `calendar_date` = '$old_date';";
     echo $query;
     mysqli_query($db, $query);
-    header('location: doctor_appointment.php');
+    if ($_SESSION["type"] == "doctor"){
+        header('location: doctor_appointment.php');
+    }else{
+        header('location: patient_appointment.php');
+    }
+    
 }
 
 

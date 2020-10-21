@@ -49,6 +49,12 @@
 
     ?>
     <h2 style="text-align: center;">My Appointments History</h2>
+    <?php
+    if (isset($_GET['reschedule'])) {
+        $appointment_id = $_GET['reschedule'];
+        include('reschedule_form.php');
+    }
+    ?>
     <br>
     <br>
     <table>
@@ -57,6 +63,7 @@
             <th>Date</th>
             <th>Timeslot</th>
             <th style='width:50%'>Description</th>
+            <th>Reschedule</th>
         </tr>
 
         <?php
@@ -64,12 +71,18 @@
         $query = "SELECT * FROM appointments where patient_id=$user_id ORDER BY appointment_date;";
         $result = mysqli_query($db, $query);
         while ($row = mysqli_fetch_array($result)) {   //Creates a loop to loop through results
-            echo "<tr><td>" . $row['doctor_id'] . "</td><td>" . $row['appointment_date'] . "</td><td>" . $row['timeslot'] . "</td><td>" . $row['description'] . "</td></tr>";  //approve and reject botton
+            echo "<tr><td>" . $row['doctor_id'] . "</td><td>" . $row['appointment_date'] . "</td><td>" . $row['timeslot'] . "</td><td>" . $row['description'] . "</td><td><a onclick=\"return confirm('Are you sure to reschedule?')\" href='patient_appointment.php?reschedule={$row['appointment_id']}' class='btn' style='background-color: #5f9ea0; text-decoration: none;'>Reschedule</a></td></tr>";  //approve and reject botton
         }
         ?>
     </table>
 
 </body>
 <?php include('footer.php'); ?>
-
+<script>
+    function change_date() {
+        date = document.getElementById("date").value;
+        document.getElementById("date_hidden").value = date;
+        document.getElementById("update_date").submit();
+    }
+</script>
 </html>

@@ -24,7 +24,7 @@ if (isset($_POST['date_hidden'])) {
     $timeslots = array_filter($timeslots, "is_zero");
 }
 ?>
-<form id="appointment_form" action="server.php" method="post">
+<form action="" method="post">
     <div class="input-group">
         <label for="date">Date: </label>
         <input type="date" id="date" name="date" value="<?php echo (isset($date)) ? $date : ''; ?>" min="<?php echo date("Y-m-d", strtotime("+1 day")) ?>" max="<?php echo date("Y-m-d", strtotime("+14 day")) ?>" onchange="change_date()" required>

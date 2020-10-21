@@ -52,9 +52,6 @@
     if (isset($_GET['reschedule'])) {
         $appointment_id = $_GET['reschedule'];
         include('reschedule_form.php');
-        // $query = "UPDATE leaves SET status='approved', admin_active=0 WHERE leave_id='$leave_id'";
-        // mysqli_query($db, $query);
-        // header('location: admin_leave_list.php');
     }
     ?>
     <br>
