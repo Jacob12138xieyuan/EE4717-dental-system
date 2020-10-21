@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My account</title>
     <link rel="stylesheet" type="text/css" href="basic.css">
     <style>
         .row {
             text-align: center;
             display: flex;
             margin-bottom: 50px;
-
         }
 
         .column {
@@ -56,6 +55,7 @@
         </div>
         <div class="column" style="margin: 0 20% 0 0;">
             <?php
+            //get user account information
             $user_id = $_SESSION["id"];
             $query = "SELECT * FROM users where id=$user_id;";
             $result = mysqli_query($db, $query);
@@ -110,6 +110,7 @@
 
     </div>
     <br>
+    <!-- form for update account information -->
     <form id="update_form" style="display: none;" action="account.php" method="post">
         <div class="input-group">
             <label for="username">Username: </label>

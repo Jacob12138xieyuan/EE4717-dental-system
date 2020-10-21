@@ -105,7 +105,7 @@ if (isset($_GET['logout'])) {
     header('location: login.php');
 }
 
-
+//update user account information
 if (isset($_POST['submit_update'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
@@ -117,22 +117,27 @@ if (isset($_POST['submit_update'])) {
     mysqli_query($db, $query);
 }
 
+//patient submit appointment with some doctor
 if (isset($_POST['submit_appointment'])) {
     $date = mysqli_real_escape_string($db, $_POST['date']);
     $timeslot = mysqli_real_escape_string($db, $_POST['timeslot']);
     $description = mysqli_real_escape_string($db, $_POST['description']);
     $patient_id = $_SESSION['id'];
+    //insert new appointment
     $query = "INSERT INTO appointments (patient_id, doctor_id, appointment_date, timeslot, description) VALUES ($patient_id, 6,'$date', '$timeslot','$description');";
     mysqli_query($db, $query);
+    //update doctor calendar
     $query = "UPDATE `calendar_6` SET `$timeslot`='1' WHERE `calendar_date` = '$date';";
     mysqli_query($db, $query);
     header('location: patient_appointment.php');
 }
 
+//patient and doctor can reschedule one appointment
 if (isset($_POST['reschedule_appointment'])) {
     $new_date = mysqli_real_escape_string($db, $_POST['date']);
     $new_timeslot = mysqli_real_escape_string($db, $_POST['timeslot']);
     $appointment_id = mysqli_real_escape_string($db, $_POST['appointment_id']);
+    //get old appointment date and timeslot
     $query = "SELECT * FROM appointments WHERE appointment_id=$appointment_id;";
     $results = mysqli_query($db, $query);
     if (mysqli_num_rows($results) == 1) {
@@ -140,15 +145,15 @@ if (isset($_POST['reschedule_appointment'])) {
         $old_date = $appointment["appointment_date"];
         $old_timeslot = $appointment["timeslot"];
     }
+    //update appintment information
     $query = "UPDATE appointments SET `appointment_date`='$new_date', `timeslot`='$new_timeslot' WHERE appointment_id=$appointment_id;";
-
     mysqli_query($db, $query);
+    //update doctor calendar information
     $query = "UPDATE `calendar_6` SET `$new_timeslot`='1' WHERE `calendar_date` = '$new_date';";
-
     mysqli_query($db, $query);
     $query = "UPDATE `calendar_6` SET `$old_timeslot`='0' WHERE `calendar_date` = '$old_date';";
-    echo $query;
     mysqli_query($db, $query);
+    //redirect user
     if ($_SESSION["type"] == "doctor"){
         header('location: doctor_appointment.php');
     }else{
@@ -157,6 +162,7 @@ if (isset($_POST['reschedule_appointment'])) {
     
 }
 
+//patient cancel an appointment
 if (isset($_GET['cancel'])) {
     $appointment_id = $_GET['cancel'];
     $query = "DELETE FROM appointments WHERE appointment_id = $appointment_id;";

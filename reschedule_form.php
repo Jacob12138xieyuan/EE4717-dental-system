@@ -33,7 +33,7 @@ if (isset($_POST['date_hidden'])) {
     <div class="input-group">
         <label for="timeslot">Timeslot: </label>
         <select id="timeslot" name="timeslot" required>
-            <option value="0">Select Timeslot</option>
+            <!-- <option value="0">Select Timeslot</option> -->
             <?php
             foreach ($timeslots as $timeslot => $boolean) {
                 echo '<option value="' . $timeslot . '">' . $timeslot . '</option>';
@@ -42,15 +42,15 @@ if (isset($_POST['date_hidden'])) {
         </select>
     </div>
     <input id="appointment_id" name="appointment_id" type="text" style="display: none;">
+    <!-- access appointment id -->
     <?php echo "<script>document.getElementById('appointment_id').value = " . $_GET["reschedule"] . ";</script>" ?>
-
 
     <div style="text-align: right;">
         <button type="reset" class="btn" style="display: inline-block;background-color:blue"> Clear </button>
         <button type="submit" name="reschedule_appointment" class="btn" style="display: inline-block;"> Submit Appointment </button>
     </div>
 </form>
-<!-- hidden form -->
+<!-- hidden form for auto update date-->
 <form id="update_date" action="" method="post" style="display:none;">
     <input type="date" id="date_hidden" name="date_hidden">
 </form>

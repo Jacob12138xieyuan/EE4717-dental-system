@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Make appointment</title>
     <link rel="stylesheet" type="text/css" href="basic.css">
     <style>
         .row {
             text-align: center;
             display: flex;
             margin-bottom: 50px;
-
         }
 
         .column {
@@ -57,6 +56,7 @@
     <?php
     include('server.php');
     include('header.php');
+    //auto submit date when date changes
     if (isset($_POST['date_hidden'])) {
         $date = $_POST['date_hidden'];
         $query = "SELECT * FROM calendar_6 WHERE calendar_date='$date';";
@@ -66,6 +66,7 @@
         {
             return $var == '0';
         }
+        //only show available timeslots
         $timeslots = array_filter($timeslots, "is_zero");
     }
 
@@ -81,13 +82,14 @@
             <form id="appointment_form" action="server.php" method="post">
                 <div class="input-group">
                     <label for="date">Date: </label>
+                    <!-- patient can only book start from next day and up to 14 days -->
                     <input type="date" id="date" name="date" value="<?php echo (isset($date)) ? $date : ''; ?>" min="<?php echo date("Y-m-d", strtotime("+1 day")) ?>" max="<?php echo date("Y-m-d", strtotime("+14 day")) ?>" onchange="change_date()" required>
                 </div>
 
                 <div class="input-group">
                     <label for="timeslot">Timeslot: </label>
                     <select id="timeslot" name="timeslot" required>
-                        <option value="0">Select Timeslot</option>
+                        <!-- <option value="0">Select Timeslot</option> -->
                         <?php
                         foreach ($timeslots as $timeslot => $boolean) {
                             echo '<option value="' . $timeslot . '">' . $timeslot . '</option>';
@@ -108,7 +110,7 @@
         </div>
 
     </div>
-    <!-- hidden form -->
+    <!-- hidden form for auto update selected date-->
     <form id="update_date" action="make_appointment.php" method="post" style="display:none;">
         <input type="date" id="date_hidden" name="date_hidden">
     </form>

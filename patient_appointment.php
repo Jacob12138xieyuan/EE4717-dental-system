@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Patient's appointments</title>
     <link rel="stylesheet" type="text/css" href="basic.css">
     <style>
         .row {
             text-align: center;
             display: flex;
             margin-bottom: 50px;
-
         }
 
         .column {
@@ -50,11 +49,11 @@
     ?>
     <h2 style="text-align: center;">My Appointments History</h2>
     <?php
+    //patient reschedule appointment
     if (isset($_GET['reschedule'])) {
         $appointment_id = $_GET['reschedule'];
         include('reschedule_form.php');
     }
-    
     ?>
     <br>
     <br>

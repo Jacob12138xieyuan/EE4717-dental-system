@@ -4,20 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Doctor's appointments</title>
     <link rel="stylesheet" type="text/css" href="basic.css">
     <style>
-        .row {
-            text-align: center;
-            display: flex;
-            margin-bottom: 50px;
-
-        }
-
-        .column {
-            flex: 50%;
-        }
-
         table,
         th,
         td {
@@ -49,6 +38,7 @@
     ?>
     <h2 style="text-align: center;">My Upcoming Appointments</h2>
     <?php
+    //if patient reschedule appoinment, include the form
     if (isset($_GET['reschedule'])) {
         $appointment_id = $_GET['reschedule'];
         include('reschedule_form.php');
@@ -66,6 +56,7 @@
         </tr>
 
         <?php
+        //table show all patient appointments
         $user_id = $_SESSION["id"];
         $query = "SELECT * FROM appointments where doctor_id=$user_id ORDER BY appointment_date;";
         $result = mysqli_query($db, $query);
@@ -78,6 +69,7 @@
 </body>
 <?php include('footer.php'); ?>
 <script>
+    //used by reschedule_form.php
     function change_date() {
         date = document.getElementById("date").value;
         document.getElementById("date_hidden").value = date;
