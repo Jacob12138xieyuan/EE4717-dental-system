@@ -80,5 +80,12 @@
 
 </body>
 <?php include('footer.php'); ?>
+<script>
+    function change_date() {
+        date = document.getElementById("date").value;
+        document.getElementById("date_hidden").value = date;
+        document.getElementById("update_date").submit();
+    }
+</script>
 
 </html>

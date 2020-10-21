@@ -125,12 +125,32 @@ if (isset($_POST['submit_appointment'])) {
     $query = "INSERT INTO appointments (patient_id, doctor_id, appointment_date, timeslot, description) VALUES ($patient_id, 6,'$date', '$timeslot','$description');";
     mysqli_query($db, $query);
     $query = "UPDATE `calendar_6` SET `$timeslot`='1' WHERE `calendar_date` = '$date';";
-    echo $query;
     mysqli_query($db, $query);
     header('location: patient_appointment.php');
 }
 
+if (isset($_POST['reschedule_appointment'])) {
+    $new_date = mysqli_real_escape_string($db, $_POST['date']);
+    $new_timeslot = mysqli_real_escape_string($db, $_POST['timeslot']);
+    $appointment_id = mysqli_real_escape_string($db, $_POST['appointment_id']);
+    $query = "SELECT * FROM appointments WHERE appointment_id=$appointment_id;";
+    $results = mysqli_query($db, $query);
+    if (mysqli_num_rows($results) == 1) {
+        $appointment = mysqli_fetch_assoc($results);
+        $old_date = $appointment["appointment_date"];
+        $old_timeslot = $appointment["timeslot"];
+    }
+    $query = "UPDATE appointments SET `appointment_date`='$new_date', `timeslot`='$new_timeslot' WHERE appointment_id=$appointment_id;";
 
+    mysqli_query($db, $query);
+    $query = "UPDATE `calendar_6` SET `$new_timeslot`='1' WHERE `calendar_date` = '$new_date';";
+
+    mysqli_query($db, $query);
+    $query = "UPDATE `calendar_6` SET `$old_timeslot`='0' WHERE `calendar_date` = '$old_date';";
+    echo $query;
+    mysqli_query($db, $query);
+    header('location: doctor_appointment.php');
+}
 
 
 // //user submit new leave request
