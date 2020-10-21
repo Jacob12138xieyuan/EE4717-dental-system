@@ -149,26 +149,34 @@
     <div class="timeline">
         <div class="container left">
             <div class="event">
-                <h2>2017</h2>
+                <h2>2017 Awards</h2>
                 <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci.</p>
+                <br>
+                <img src="images/h4.png" style="width: 280px; border-radius: 5px">
             </div>
         </div>
         <div class="container right">
             <div class="event">
-                <h2>2014</h2>
+                <h2>2014 New Tech</h2>
                 <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci.</p>
+                <br>
+                <img src="images/h3.jpg" style="width: 280px; border-radius: 5px">
             </div>
         </div>
         <div class="container left">
             <div class="event">
-                <h2>2009</h2>
+                <h2>2009 Equipments</h2>
                 <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci.</p>
+                <br>
+                <img src="images/h2.jpg" style="width: 280px; border-radius: 5px">
             </div>
         </div>
         <div class="container right">
             <div class="event">
-                <h2>2007</h2>
+                <h2>2007 Opening</h2>
                 <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci.</p>
+                <br>
+                <img src="images/h1.jpg" style="width: 280px; border-radius: 5px">
             </div>
         </div>
     </div>

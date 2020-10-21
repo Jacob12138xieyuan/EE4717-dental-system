@@ -130,6 +130,9 @@ if (isset($_POST['submit_appointment'])) {
     header('location: patient_appointment.php');
 }
 
+
+
+
 // //user submit new leave request
 // if (isset($_POST['apply'])) {
 //     //get holidays array

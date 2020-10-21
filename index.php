@@ -20,6 +20,8 @@ if (empty($_SESSION['username'])) {
     $type = $_SESSION['user_type'];
     if ($type == 'patient') {
         include('patient_home.php');
+    } else {
+        include('doctor_home.php');
     }
     ?>
     <br>

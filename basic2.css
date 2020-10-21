@@ -1,3 +1,7 @@
+* {
+  display: inline;
+}
+
 body {
   font-size: 120%;
 }
@@ -88,15 +92,6 @@ form {
   margin: 3px;
 }
 
-.input-group input {
-  height: 30px;
-  width: 93%;
-  padding: 5px 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid grey;
-}
-
 .btn {
   padding: 10px;
   font-size: 15px;
@@ -105,15 +100,4 @@ form {
   border: none;
   border-radius: 5px;
   text-decoration: none;
-}
-
-.error {
-  width: 92%;
-  margin: 0px auto;
-  padding: 10px;
-  border: 1px solid #a94442;
-  color: #a94442;
-  background: #f2dede;
-  border-radius: 5px;
-  text-align: left;
 }

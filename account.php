@@ -143,14 +143,14 @@
 <?php include('footer.php'); ?>
 <script>
     function update_account() {
-        x = document.getElementById("update_form");
+        x = document.getElementById("appointment_form");
         if (x.style.display === "none") {
             x.style.display = "block";
         }
     }
 
     function cancel_update() {
-        x = document.getElementById("update_form");
+        x = document.getElementById("appointment_form");
         if (x.style.display === "block") {
             x.style.display = "none";
         }
