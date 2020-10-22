@@ -192,6 +192,8 @@ if (isset($_POST['upload_image'])) {
 
         // Upload file
         move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $name);
+        $_SESSION["profile_image"] = '1';
+        header('location: account.php');
     }
 }
 // //user submit new leave request

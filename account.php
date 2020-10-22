@@ -54,7 +54,7 @@
             <?php if ($_SESSION["profile_image"] == '0') {
                 echo "<img src='images/patient.png' style='width:250px'>";
             } else {
-                echo "<img src='profile_images/" . $_SESSION["id"] . ".jpg' style='width:250px'>";
+                echo "<img src='profile_images/" . $_SESSION["id"] . ".jpg' style='width:250px;border-radius: 50%'>";
             }
             ?>
 
