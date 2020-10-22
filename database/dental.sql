@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2020-10-20 10:40:50
+-- 生成日期： 2020-10-22 08:53:11
 -- 服务器版本： 5.7.24
 -- PHP 版本： 7.2.14
 
@@ -39,16 +39,14 @@ CREATE TABLE IF NOT EXISTS `appointments` (
   PRIMARY KEY (`appointment_id`),
   KEY `doctor_id` (`doctor_id`),
   KEY `patient_id` (`patient_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- 转存表中的数据 `appointments`
 --
 
 INSERT INTO `appointments` (`appointment_id`, `patient_id`, `doctor_id`, `appointment_date`, `timeslot`, `description`) VALUES
-(7, 10, 6, '2020-11-01', '9:00-10:00', 'hi'),
-(9, 7, 6, '2020-10-31', '14:00-15:00', 'headache'),
-(8, 10, 6, '2020-11-01', '11:00-12:00', 'I have a faver');
+(12, 7, 6, '2020-11-01', '9:00-10:00', 'I have a cough');
 
 -- --------------------------------------------------------
 
@@ -89,14 +87,14 @@ INSERT INTO `calendar_6` (`calendar_date`, `9:00-10:00`, `10:00-11:00`, `11:00-1
 ('2020-10-26', '0', '0', '0', '0', '0', '0'),
 ('2020-10-20', '0', '0', '0', '0', '0', '0'),
 ('2020-10-21', '0', '0', '0', '0', '0', '0'),
-('2020-10-22', '0', '0', '0', '0', '0', '0'),
+('2020-10-22', '1', '0', '0', '0', '0', '0'),
 ('2020-10-23', '0', '0', '0', '0', '0', '0'),
 ('2020-10-24', '0', '0', '0', '0', '0', '0'),
 ('2020-10-25', '0', '0', '0', '0', '0', '0'),
 ('2020-10-29', '0', '0', '0', '0', '0', '0'),
 ('2020-10-30', '0', '0', '0', '0', '0', '0'),
-('2020-10-31', '0', '0', '0', '1', '0', '0'),
-('2020-11-01', '1', '0', '1', '0', '0', '0'),
+('2020-10-31', '0', '0', '0', '0', '0', '1'),
+('2020-11-01', '1', '0', '0', '0', '0', '0'),
 ('2020-11-13', '0', '0', '0', '0', '0', '0'),
 ('2020-11-14', '0', '0', '0', '0', '0', '0'),
 ('2020-11-15', '0', '0', '0', '0', '0', '0'),
@@ -121,17 +119,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `address` varchar(255) DEFAULT NULL,
   `phone` varchar(22) DEFAULT NULL,
   `gender` varchar(8) NOT NULL DEFAULT 'Male',
+  `profile_image` varchar(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `type`, `address`, `phone`, `gender`) VALUES
-(6, 'doctor', 'xiey0017@ntu.edu.sg', '202cb962ac59075b964b07152d234b70', 'doctor', NULL, NULL, 'Male'),
-(7, 'patient', 'xiey0017@ntu.edu.sg', '202cb962ac59075b964b07152d234b70', 'patient', 'Singapore, Nanyang Technological University, hall of 13, 64-05-1303', '90870139', 'Male'),
-(10, 'patient2', 'xiey0017@gmail.com', '202cb962ac59075b964b07152d234b70', 'patient', NULL, NULL, 'Male');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `type`, `address`, `phone`, `gender`, `profile_image`) VALUES
+(6, 'Jeremy', 'xiey0017@ntu.edu.sg', '202cb962ac59075b964b07152d234b70', 'doctor', NULL, NULL, 'Male', '1'),
+(7, 'patient', 'xiey0017@gamil.com', '202cb962ac59075b964b07152d234b70', 'patient', 'Singapore, Nanyang Technological University, hall of 13, 64-05-1303', '88888888', 'Male', '1'),
+(10, 'patient2', 'xiey0017@gmail.com', '202cb962ac59075b964b07152d234b70', 'patient', NULL, NULL, 'Male', '0'),
+(12, 'Gina', 'gina@gmail.com', '202cb962ac59075b964b07152d234b70', 'doctor', NULL, NULL, 'Male', '1');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
