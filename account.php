@@ -51,7 +51,17 @@
     <br>
     <div class="row">
         <div class="column" style="margin: 0 0 0 15%;">
-            <img src="images/patient.png" style="width:250px">
+            <?php if ($_SESSION["profile_image"] == '0') {
+                echo "<img src='images/patient.png' style='width:250px'>";
+            } else {
+                echo "<img src='profile_images/" . $_SESSION["id"] . ".jpg' style='width:250px'>";
+            }
+            ?>
+
+            <form method="post" action="server.php" enctype='multipart/form-data'>
+                <input type='file' name='file' />
+                <input type='submit' value='Upload image' name='upload_image'>
+            </form>
         </div>
         <div class="column" style="margin: 0 20% 0 0;">
             <?php

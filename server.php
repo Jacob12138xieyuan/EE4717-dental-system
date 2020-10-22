@@ -89,6 +89,7 @@ if (isset($_POST['login_user'])) {
             $_SESSION['id'] = $id;
             $_SESSION['username'] = $username;
             $_SESSION['user_type'] = $user['type'];
+            $_SESSION['profile_image'] = $user['profile_image'];
             $_SESSION['success'] = "Logged in successfully";
             header("location: index.php");
         } else {
@@ -154,12 +155,11 @@ if (isset($_POST['reschedule_appointment'])) {
     $query = "UPDATE `calendar_6` SET `$old_timeslot`='0' WHERE `calendar_date` = '$old_date';";
     mysqli_query($db, $query);
     //redirect user
-    if ($_SESSION["type"] == "doctor"){
+    if ($_SESSION["type"] == "doctor") {
         header('location: doctor_appointment.php');
-    }else{
+    } else {
         header('location: patient_appointment.php');
     }
-    
 }
 
 //patient cancel an appointment
@@ -168,6 +168,31 @@ if (isset($_GET['cancel'])) {
     $query = "DELETE FROM appointments WHERE appointment_id = $appointment_id;";
     mysqli_query($db, $query);
     header('location: patient_appointment.php');
+}
+
+if (isset($_POST['upload_image'])) {
+
+
+    $target_dir = "profile_images/";
+    $target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+    // Select file type
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $id = $_SESSION["id"];
+    $name = $id . '.' . $imageFileType;
+    // Valid file extensions
+    $extensions_arr = array("jpg");
+
+    // Check extension
+    if (in_array($imageFileType, $extensions_arr)) {
+
+        // Insert record
+        $query = "UPDATE `users` SET `profile_image`='1' WHERE `id` = $id;";
+        mysqli_query($db, $query);
+
+        // Upload file
+        move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $name);
+    }
 }
 // //user submit new leave request
 // if (isset($_POST['apply'])) {
