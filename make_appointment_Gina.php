@@ -59,10 +59,10 @@
     //auto submit date when date changes
     if (isset($_POST['date_hidden'])) {
         $date = $_POST['date_hidden'];
-        $query = "SELECT * FROM calendar_6 WHERE calendar_date='$date';";
+        $query = "SELECT * FROM calendar_12 WHERE calendar_date='$date';";
         $results = mysqli_query($db, $query);
         $timeslots = array_slice(mysqli_fetch_assoc($results), 1);
-        $_SESSION['doctor_id']='6';
+        $_SESSION['doctor_id']='12';
         function is_zero($var)
         {
             return $var == '0';
@@ -77,7 +77,7 @@
     <br>
     <div class="row">
         <div class="column" style="margin: 0 0 0 15%;">
-            <img src="images/doctor1.jpg" style="width:250px">
+            <img src="images/doctor2.jpg" style="width:250px">
         </div>
         <div class="column" style="margin: 0 20% 0 0;">
             <form id="appointment_form" action="server.php" method="post">
@@ -99,24 +99,28 @@
                     </select>
                 </div>
                 <div class="input-group">
+                
                     <label for="description">Description: </label>
                     <input type="text" id="description" name="description" required>
                 </div>
 
                 <div style="text-align: right;">
                     <button type="reset" class="btn" style="display: inline-block;background-color:blue"> Clear </button>
-                    <button type="submit" name="submit_appointment" class="btn" style="display: inline-block;"> Submit Appointment </button>
-                </div>
+                    <button type="submit" name="submit_appointment" class="btn" style="display: inline-block;" > Submit Appointment </button>
+              
+              </div>
             </form>
         </div>
 
     </div>
     <!-- hidden form for auto update selected date-->
-    <form id="update_date" action="make_appointment.php" method="post" style="display:none;">
+    <form id="update_date" action="make_appointment_Gina.php" method="post" style="display:none;">
         <input type="date" id="date_hidden" name="date_hidden">
-    </form>  
+    </form>
+
 </body>
 <?php include('footer.php'); ?>
+
 <script>
     function change_date() {
         date = document.getElementById("date").value;

@@ -31,8 +31,11 @@ if (isset($_POST['register_user'])) {
         array_push($errors, "Email is required");
     }
     if (empty($password1)) {
-        array_push($errors, "password is required");
-    };
+        array_push($errors, "Password is required");
+    }
+    if ( !preg_match("/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/", $password1) ) {
+		array_push($errors, "Password should inclde at least 1 uppercase, 1 lowercase and 1 number");
+	}
     if ($password1 != $password2) {
         array_push($errors, "Passwords do not match");
     }
@@ -123,12 +126,33 @@ if (isset($_POST['submit_appointment'])) {
     $date = mysqli_real_escape_string($db, $_POST['date']);
     $timeslot = mysqli_real_escape_string($db, $_POST['timeslot']);
     $description = mysqli_real_escape_string($db, $_POST['description']);
+    $to = 'f35ee@localhost';
+    $subject= 'dental appointment';
+    $massage= ' Your have made an appointment';
+    $headers= 'From: f35ee@localhost'. "\r\n".
+    'Reply-To:f35ee@localhost'. "\r\n".
+    'X-Mailer: PHP/'. phpversion();
+    mail($to, $subject, $massage, $headers, '-f35ee@localhost');
+    echo("mail send to:". $to);
+    if($_SESSION['doctor_id']==12){
+        $doctor_id=12;
+    }
+    else{
+        $doctor_id=6;
+    }
     $patient_id = $_SESSION['id'];
     //insert new appointment
-    $query = "INSERT INTO appointments (patient_id, doctor_id, appointment_date, timeslot, description) VALUES ($patient_id, 6,'$date', '$timeslot','$description');";
+    $query = "INSERT INTO appointments (patient_id, doctor_id, appointment_date, timeslot, description) VALUES ($patient_id, $doctor_id,'$date', '$timeslot','$description');";
     mysqli_query($db, $query);
     //update doctor calendar
-    $query = "UPDATE `calendar_6` SET `$timeslot`='1' WHERE `calendar_date` = '$date';";
+    if ($doctor_id==6){
+        $query = "UPDATE `calendar_6` SET `$timeslot`='1' WHERE `calendar_date` = '$date';";
+
+    }
+    if ($doctor_id == 12){
+        $query = "UPDATE `calendar_12` SET `$timeslot`='1' WHERE `calendar_date` = '$date';";
+
+    }
     mysqli_query($db, $query);
     header('location: patient_appointment.php');
 }
@@ -145,15 +169,24 @@ if (isset($_POST['reschedule_appointment'])) {
         $appointment = mysqli_fetch_assoc($results);
         $old_date = $appointment["appointment_date"];
         $old_timeslot = $appointment["timeslot"];
+        $old_doctor_id = $appointment["doctor_id"];
     }
     //update appintment information
     $query = "UPDATE appointments SET `appointment_date`='$new_date', `timeslot`='$new_timeslot' WHERE appointment_id=$appointment_id;";
     mysqli_query($db, $query);
     //update doctor calendar information
-    $query = "UPDATE `calendar_6` SET `$new_timeslot`='1' WHERE `calendar_date` = '$new_date';";
-    mysqli_query($db, $query);
-    $query = "UPDATE `calendar_6` SET `$old_timeslot`='0' WHERE `calendar_date` = '$old_date';";
-    mysqli_query($db, $query);
+    if ($old_doctor_id=6){
+        $query = "UPDATE `calendar_6` SET `$new_timeslot`='1' WHERE `calendar_date` = '$new_date';";
+        mysqli_query($db, $query);
+        $query = "UPDATE `calendar_6` SET `$old_timeslot`='0' WHERE `calendar_date` = '$old_date';";
+        mysqli_query($db, $query);
+    }
+    elseif($old_doctor_id=6){
+        $query = "UPDATE `calendar_12` SET `$new_timeslot`='1' WHERE `calendar_date` = '$new_date';";
+        mysqli_query($db, $query);
+        $query = "UPDATE `calendar_12` SET `$old_timeslot`='0' WHERE `calendar_date` = '$old_date';";
+        mysqli_query($db, $query);
+    }
     //redirect user
     if ($_SESSION["type"] == "doctor") {
         header('location: doctor_appointment.php');
