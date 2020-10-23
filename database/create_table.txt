@@ -1,0 +1,36 @@
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `type` varchar(20) DEFAULT 'patient',
+  `address` varchar(255) DEFAULT NULL,
+  `phone` varchar(22) DEFAULT NULL,
+  `gender` varchar(8) NOT NULL DEFAULT 'Male',
+  `profile_image` varchar(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) 
+
+CREATE TABLE `calendar_1` (
+  `calendar_date` date NOT NULL,
+  `9:00-10:00` varchar(2) DEFAULT 0,
+  `10:00-11:00` varchar(2) DEFAULT 0,
+  `11:00-12:00` varchar(2) DEFAULT 0,
+  `14:00-15:00` varchar(2) DEFAULT 0,
+  `15:00-16:00` varchar(2) DEFAULT 0,
+  `16:00-17:00` varchar(2) DEFAULT 0,
+  PRIMARY KEY (`calendar_date`)
+)
+
+CREATE TABLE `appointments` (
+  `appointment_id` int NOT NULL AUTO_INCREMENT,
+  `patient_id` int NOT NULL,
+  `doctor_id` int NOT NULL,
+  `appointment_date` date NOT NULL,
+  `timeslot` varchar(20) NOT NULL,
+  `description` text,
+  PRIMARY KEY (`appointment_id`),
+  FOREIGN KEY (`doctor_id`) REFERENCE users(id),
+  FOREIGN KEY (`patient_id`) REFERENCE users(id),
+  FOREIGN KEY (`appointment_date`) REFERENCE calendar_1(calendar_date)
+)

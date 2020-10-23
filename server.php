@@ -12,7 +12,7 @@ $password = "";
 $errors = array();
 
 //connect to db
-$db = mysqli_connect('localhost', 'root', '', 'dental') or die("could not connect to db");
+$db = mysqli_connect('localhost', 'root', '', 'f35ee') or die("could not connect to db");
 // $db = mysqli_connect('localhost', 'f35ee', 'f35ee', 'f35ee') or die("could not connect to db");
 
 //register new users
@@ -34,7 +34,7 @@ if (isset($_POST['register_user'])) {
         array_push($errors, "Password is required");
     }
     if (!preg_match("/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/", $password1)) {
-        array_push($errors, "Password should inclde at least 1 uppercase, 1 lowercase and 1 number");
+        array_push($errors, "Password should include at least 1 uppercase, 1 lowercase and 1 number");
     }
     if ($password1 != $password2) {
         array_push($errors, "Passwords do not match");
