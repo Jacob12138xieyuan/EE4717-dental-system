@@ -9,7 +9,7 @@ CREATE TABLE `users` (
   `gender` varchar(8) NOT NULL DEFAULT 'Male',
   `profile_image` varchar(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) 
+); 
 
 CREATE TABLE `calendar_1` (
   `calendar_date` date NOT NULL,
@@ -20,7 +20,18 @@ CREATE TABLE `calendar_1` (
   `15:00-16:00` varchar(2) DEFAULT 0,
   `16:00-17:00` varchar(2) DEFAULT 0,
   PRIMARY KEY (`calendar_date`)
-)
+);
+
+CREATE TABLE `calendar_2` (
+  `calendar_date` date NOT NULL,
+  `9:00-10:00` varchar(2) DEFAULT 0,
+  `10:00-11:00` varchar(2) DEFAULT 0,
+  `11:00-12:00` varchar(2) DEFAULT 0,
+  `14:00-15:00` varchar(2) DEFAULT 0,
+  `15:00-16:00` varchar(2) DEFAULT 0,
+  `16:00-17:00` varchar(2) DEFAULT 0,
+  PRIMARY KEY (`calendar_date`)
+);
 
 CREATE TABLE `appointments` (
   `appointment_id` int NOT NULL AUTO_INCREMENT,
@@ -30,7 +41,7 @@ CREATE TABLE `appointments` (
   `timeslot` varchar(20) NOT NULL,
   `description` text,
   PRIMARY KEY (`appointment_id`),
-  FOREIGN KEY (`doctor_id`) REFERENCE users(id),
-  FOREIGN KEY (`patient_id`) REFERENCE users(id),
-  FOREIGN KEY (`appointment_date`) REFERENCE calendar_1(calendar_date)
-)
+  FOREIGN KEY (`doctor_id`) REFERENCES users(id),
+  FOREIGN KEY (`patient_id`) REFERENCES users(id),
+  FOREIGN KEY (`appointment_date`) REFERENCES calendar_1(calendar_date)
+);
