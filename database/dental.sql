@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2020-10-23 02:04:59
+-- 生成日期： 2020-10-23 02:31:31
 -- 服务器版本： 5.7.24
 -- PHP 版本： 7.2.14
 
@@ -39,14 +39,14 @@ CREATE TABLE IF NOT EXISTS `appointments` (
   PRIMARY KEY (`appointment_id`),
   KEY `doctor_id` (`doctor_id`),
   KEY `patient_id` (`patient_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
 -- 转存表中的数据 `appointments`
 --
 
 INSERT INTO `appointments` (`appointment_id`, `patient_id`, `doctor_id`, `appointment_date`, `timeslot`, `description`) VALUES
-(28, 7, 6, '2020-11-02', '10:00-11:00', '2'),
+(28, 7, 6, '2020-11-02', '9:00-10:00', '2'),
 (26, 7, 12, '2020-11-01', '9:00-10:00', '1');
 
 -- --------------------------------------------------------
@@ -82,7 +82,7 @@ INSERT INTO `calendar_6` (`calendar_date`, `9:00-10:00`, `10:00-11:00`, `11:00-1
 ('2020-11-07', '0', '0', '0', '0', '0', '0'),
 ('2020-11-08', '0', '0', '0', '0', '0', '0'),
 ('2020-11-03', '0', '0', '0', '0', '0', '0'),
-('2020-11-02', '0', '1', '0', '0', '0', '0'),
+('2020-11-02', '1', '0', '0', '0', '0', '0'),
 ('2020-10-28', '0', '0', '0', '0', '0', '0'),
 ('2020-10-27', '0', '0', '0', '0', '0', '0'),
 ('2020-10-26', '0', '0', '0', '0', '0', '0'),

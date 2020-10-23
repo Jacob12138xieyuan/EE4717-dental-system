@@ -92,6 +92,9 @@ if (isset($_POST['login_user'])) {
             $_SESSION['id'] = $id;
             $_SESSION['username'] = $username;
             $_SESSION['user_type'] = $user['type'];
+            if ($_SESSION['user_type'] == 'doctor') {
+                $_SESSION['doctor_id'] = $id;
+            }
             $_SESSION['profile_image'] = $user['profile_image'];
             $_SESSION['success'] = "Logged in successfully";
             header("location: index.php");
@@ -104,8 +107,7 @@ if (isset($_POST['login_user'])) {
 //user logout
 if (isset($_GET['logout'])) {
     session_destroy();
-    unset($_SESSION['id']);
-    unset($_SESSION['username']);
+    session_unset();
     header('location: login.php');
 }
 

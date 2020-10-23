@@ -59,10 +59,11 @@
     //auto submit date when date changes
     if (isset($_POST['date_hidden'])) {
         $date = $_POST['date_hidden'];
-        $query = "SELECT * FROM calendar_6 WHERE calendar_date='$date';";
+        $doctor_id = $_GET["doctor_id"];
+        $query = "SELECT * FROM calendar_{$doctor_id} WHERE calendar_date='$date';";
         $results = mysqli_query($db, $query);
         $timeslots = array_slice(mysqli_fetch_assoc($results), 1);
-        $_SESSION['doctor_id']='6';
+
         function is_zero($var)
         {
             return $var == '0';
@@ -77,7 +78,11 @@
     <br>
     <div class="row">
         <div class="column" style="margin: 0 0 0 15%;">
-            <img src="images/doctor1.jpg" style="width:250px">
+            <?php
+            $doctor_id = $_GET["doctor_id"];
+            $_SESSION["doctor_id"] = $doctor_id;
+            echo "<img src='profile_images/" . $doctor_id . ".jpg' style='width:250px'>"
+            ?>
         </div>
         <div class="column" style="margin: 0 20% 0 0;">
             <form id="appointment_form" action="server.php" method="post">
@@ -112,9 +117,12 @@
 
     </div>
     <!-- hidden form for auto update selected date-->
-    <form id="update_date" action="make_appointment.php" method="post" style="display:none;">
-        <input type="date" id="date_hidden" name="date_hidden">
-    </form>  
+    <?php
+    echo "<form id='update_date' action='make_appointment.php?doctor_id=" . $doctor_id . "' method='post' style='display:none;''>";
+    ?>
+
+    <input type="date" id="date_hidden" name="date_hidden">
+    </form>
 </body>
 <?php include('footer.php'); ?>
 <script>

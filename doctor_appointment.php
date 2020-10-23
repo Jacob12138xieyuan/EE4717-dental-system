@@ -49,7 +49,7 @@
     <table>
         <tr>
             <th>Patient ID</th>
-            <th>Patient</th>
+            <th>Patient Name</th>
             <th>Date</th>
             <th>Timeslot</th>
             <th style='width:50%'>Description</th>
