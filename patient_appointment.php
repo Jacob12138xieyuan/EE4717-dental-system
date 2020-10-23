@@ -68,17 +68,13 @@
 
         <?php
         $user_id = $_SESSION["id"];
-        $query = "SELECT * FROM appointments where patient_id=$user_id ORDER BY appointment_date;";
+        $query = "SELECT users.username, appointments.appointment_id, appointments.appointment_date, appointments.timeslot, appointments.description
+        FROM appointments
+        INNER JOIN users ON appointments.doctor_id=users.id WHERE appointments.patient_id = $user_id ORDER BY appointment_date;";
+        // $query = "SELECT * FROM appointments where patient_id=$user_id ORDER BY appointment_date;";
         $result = mysqli_query($db, $query);
         while ($row = mysqli_fetch_array($result)) {   //Creates a loop to loop through results
-            if($row['doctor_id']==6){
-            echo "<tr><td>" . 'Jeremy'. "</td><td>" . $row['appointment_date'] . "</td><td>" . $row['timeslot'] . "</td><td>" . $row['description'] . "</td><td><a onclick=\"return confirm('Are you sure to reschedule?')\" href='patient_appointment.php?reschedule={$row['appointment_id']}' class='btn' style='background-color: #5f9ea0; text-decoration: none;'>Reschedule</a><a onclick=\"return confirm('Are you sure to cancel?')\" href='server.php?cancel={$row['appointment_id']}' class='btn' style='background-color: red; text-decoration: none; margin-left:10px'>Cancel</a></td></tr>";  //approve and reject botton
-        }
-            elseif($row['doctor_id']==12){
-                echo "<tr><td>" . 'Gina'. "</td><td>" . $row['appointment_date'] . "</td><td>" . $row['timeslot'] . "</td><td>" . $row['description'] . "</td><td><a onclick=\"return confirm('Are you sure to reschedule?')\" href='patient_appointment.php?reschedule={$row['appointment_id']}' class='btn' style='background-color: #5f9ea0; text-decoration: none;'>Reschedule</a><a onclick=\"return confirm('Are you sure to cancel?')\" href='server.php?cancel={$row['appointment_id']}' class='btn' style='background-color: red; text-decoration: none; margin-left:10px'>Cancel</a></td></tr>";  //approve and reject botton
-            }
-
-            
+            echo "<tr><td>" . $row['username'] . "</td><td>" . $row['appointment_date'] . "</td><td>" . $row['timeslot'] . "</td><td>" . $row['description'] . "</td><td><a onclick=\"return confirm('Are you sure to reschedule?')\" href='patient_appointment.php?reschedule={$row['appointment_id']}' class='btn' style='background-color: #5f9ea0; text-decoration: none;'>Reschedule</a><a onclick=\"return confirm('Are you sure to cancel?')\" href='server.php?cancel={$row['appointment_id']}' class='btn' style='background-color: red; text-decoration: none; margin-left:10px'>Cancel</a></td></tr>";  //approve and reject botton
         }
         ?>
     </table>
@@ -92,4 +88,5 @@
         document.getElementById("update_date").submit();
     }
 </script>
+
 </html>

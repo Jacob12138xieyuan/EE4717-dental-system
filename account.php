@@ -59,8 +59,8 @@
             ?>
 
             <form method="post" action="server.php" enctype='multipart/form-data'>
-                <input type='file' name='file' />
-                <input type='submit' value='Upload image' name='upload_image'>
+                <input type='file' name='file' style="margin-left:30px; margin-bottom:10px" />
+                <input type='submit' class="btn" value='Upload image' name='upload_image'>
             </form>
         </div>
         <div class="column" style="margin: 0 20% 0 0;">

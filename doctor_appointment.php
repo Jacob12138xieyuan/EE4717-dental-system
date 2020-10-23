@@ -48,6 +48,7 @@
     <br>
     <table>
         <tr>
+            <th>Patient ID</th>
             <th>Patient</th>
             <th>Date</th>
             <th>Timeslot</th>
@@ -58,10 +59,13 @@
         <?php
         //table show all patient appointments
         $user_id = $_SESSION["id"];
-        $query = "SELECT * FROM appointments where doctor_id=$user_id ORDER BY appointment_date;";
+        $query = "SELECT users.id, users.username, appointments.appointment_id, appointments.appointment_date, appointments.timeslot, appointments.description
+        FROM appointments
+        INNER JOIN users ON appointments.patient_id=users.id WHERE appointments.doctor_id = {$user_id} ORDER BY appointment_date;";
+        // $query = "SELECT * FROM appointments where doctor_id=$user_id ORDER BY appointment_date;";
         $result = mysqli_query($db, $query);
         while ($row = mysqli_fetch_array($result)) {   //Creates a loop to loop through results
-            echo "<tr><td>" . $row['patient_id'] . "</td><td>" . $row['appointment_date'] . "</td><td>" . $row['timeslot'] . "</td><td>" . $row['description'] . "</td><td><a onclick=\"return confirm('Are you sure to reschedule?')\" href='doctor_appointment.php?reschedule={$row['appointment_id']}' class='btn' style='background-color: #5f9ea0; text-decoration: none;'>Reschedule</a></td></tr>";  //approve and reject botton
+            echo "<tr><td>" . $row['id'] . "</td><td>" . $row['username'] . "</td><td>" . $row['appointment_date'] . "</td><td>" . $row['timeslot'] . "</td><td>" . $row['description'] . "</td><td><a onclick=\"return confirm('Are you sure to reschedule?')\" href='doctor_appointment.php?reschedule={$row['appointment_id']}' class='btn' style='background-color: #5f9ea0; text-decoration: none;'>Reschedule</a></td></tr>";  //approve and reject botton
         }
         ?>
     </table>

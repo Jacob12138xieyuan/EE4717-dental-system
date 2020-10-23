@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Oct 22, 2020 at 04:37 PM
--- Server version: 5.7.31
--- PHP Version: 7.3.21
+-- 主机： 127.0.0.1:3306
+-- 生成日期： 2020-10-23 02:04:59
+-- 服务器版本： 5.7.24
+-- PHP 版本： 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dental`
+-- 数据库： `dental`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `appointments`
+-- 表的结构 `appointments`
 --
 
 DROP TABLE IF EXISTS `appointments`;
@@ -38,27 +39,20 @@ CREATE TABLE IF NOT EXISTS `appointments` (
   PRIMARY KEY (`appointment_id`),
   KEY `doctor_id` (`doctor_id`),
   KEY `patient_id` (`patient_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `appointments`
+-- 转存表中的数据 `appointments`
 --
 
 INSERT INTO `appointments` (`appointment_id`, `patient_id`, `doctor_id`, `appointment_date`, `timeslot`, `description`) VALUES
-(12, 7, 6, '2020-11-01', '9:00-10:00', 'I have a cough'),
-(17, 13, 12, '2020-11-02', '11:00-12:00', 'gina'),
-(22, 13, 12, '2020-11-02', '15:00-16:00', 'gina'),
-(18, 13, 6, '2020-11-02', '9:00-10:00', 'jeremy'),
-(19, 13, 12, '2020-11-02', '14:00-15:00', 'gina'),
-(20, 13, 6, '2020-11-02', '11:00-12:00', 'jeremy'),
-(21, 13, 6, '2020-11-02', '11:00-12:00', 'jeremy'),
-(23, 13, 12, '2020-11-02', '16:00-17:00', 'gina'),
-(24, 13, 6, '2020-11-02', '14:00-15:00', 'jeremy');
+(28, 7, 6, '2020-11-02', '10:00-11:00', '2'),
+(26, 7, 12, '2020-11-01', '9:00-10:00', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `calendar_6`
+-- 表的结构 `calendar_6`
 --
 
 DROP TABLE IF EXISTS `calendar_6`;
@@ -74,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `calendar_6` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `calendar_6`
+-- 转存表中的数据 `calendar_6`
 --
 
 INSERT INTO `calendar_6` (`calendar_date`, `9:00-10:00`, `10:00-11:00`, `11:00-12:00`, `14:00-15:00`, `15:00-16:00`, `16:00-17:00`) VALUES
@@ -88,20 +82,20 @@ INSERT INTO `calendar_6` (`calendar_date`, `9:00-10:00`, `10:00-11:00`, `11:00-1
 ('2020-11-07', '0', '0', '0', '0', '0', '0'),
 ('2020-11-08', '0', '0', '0', '0', '0', '0'),
 ('2020-11-03', '0', '0', '0', '0', '0', '0'),
-('2020-11-02', '1', '1', '1', '1', '0', '0'),
+('2020-11-02', '0', '1', '0', '0', '0', '0'),
 ('2020-10-28', '0', '0', '0', '0', '0', '0'),
 ('2020-10-27', '0', '0', '0', '0', '0', '0'),
 ('2020-10-26', '0', '0', '0', '0', '0', '0'),
 ('2020-10-20', '0', '0', '0', '0', '0', '0'),
 ('2020-10-21', '0', '0', '0', '0', '0', '0'),
-('2020-10-22', '1', '0', '0', '0', '0', '0'),
+('2020-10-22', '0', '0', '0', '0', '0', '0'),
 ('2020-10-23', '0', '0', '0', '0', '0', '0'),
 ('2020-10-24', '0', '0', '0', '0', '0', '0'),
 ('2020-10-25', '0', '0', '0', '0', '0', '0'),
 ('2020-10-29', '0', '0', '0', '0', '0', '0'),
 ('2020-10-30', '0', '0', '0', '0', '0', '0'),
-('2020-10-31', '0', '0', '0', '0', '0', '1'),
-('2020-11-01', '1', '0', '0', '0', '0', '0'),
+('2020-10-31', '0', '0', '0', '0', '0', '0'),
+('2020-11-01', '0', '0', '0', '0', '0', '0'),
 ('2020-11-13', '0', '0', '0', '0', '0', '0'),
 ('2020-11-14', '0', '0', '0', '0', '0', '0'),
 ('2020-11-15', '0', '0', '0', '0', '0', '0'),
@@ -113,7 +107,7 @@ INSERT INTO `calendar_6` (`calendar_date`, `9:00-10:00`, `10:00-11:00`, `11:00-1
 -- --------------------------------------------------------
 
 --
--- Table structure for table `calendar_12`
+-- 表的结构 `calendar_12`
 --
 
 DROP TABLE IF EXISTS `calendar_12`;
@@ -130,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `calendar_12` (
 ) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `calendar_12`
+-- 转存表中的数据 `calendar_12`
 --
 
 INSERT INTO `calendar_12` (`calendar_date`, `9:00-10:00`, `10:00-11:00`, `11:00-12:00`, `14:00-15:00`, `15:00-16:00`, `16:00-17:00`, `new`) VALUES
@@ -144,19 +138,19 @@ INSERT INTO `calendar_12` (`calendar_date`, `9:00-10:00`, `10:00-11:00`, `11:00-
 ('2020-11-07', '0', '0', '0', '0', '0', '0', 8),
 ('2020-11-08', '0', '0', '0', '0', '0', '0', 9),
 ('2020-11-03', '0', '0', '0', '0', '0', '0', 10),
-('2020-11-02', '1', '1', '1', '1', '1', '1', 11),
+('2020-11-02', '0', '0', '0', '0', '0', '0', 11),
 ('2020-10-28', '0', '0', '0', '0', '0', '0', 12),
 ('2020-10-27', '0', '0', '0', '0', '0', '0', 13),
 ('2020-10-26', '0', '0', '0', '0', '0', '0', 14),
 ('2020-10-20', '0', '0', '0', '0', '0', '0', 15),
 ('2020-10-21', '0', '0', '0', '0', '0', '0', 16),
-('2020-10-22', '1', '0', '0', '0', '0', '0', 17),
+('2020-10-22', '0', '0', '0', '0', '0', '0', 17),
 ('2020-10-23', '0', '0', '0', '0', '0', '0', 18),
 ('2020-10-24', '0', '0', '0', '0', '0', '0', 19),
-('2020-10-25', '1', '0', '0', '0', '0', '0', 20),
+('2020-10-25', '0', '0', '0', '0', '0', '0', 20),
 ('2020-10-29', '0', '0', '0', '0', '0', '0', 21),
 ('2020-10-30', '0', '0', '0', '0', '0', '0', 22),
-('2020-10-31', '0', '0', '0', '0', '0', '1', 23),
+('2020-10-31', '0', '0', '0', '0', '0', '0', 23),
 ('2020-11-01', '1', '0', '0', '0', '0', '0', 24),
 ('2020-11-13', '0', '0', '0', '0', '0', '0', 25),
 ('2020-11-14', '0', '0', '0', '0', '0', '0', 26),
@@ -169,7 +163,7 @@ INSERT INTO `calendar_12` (`calendar_date`, `9:00-10:00`, `10:00-11:00`, `11:00-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- 表的结构 `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -187,14 +181,14 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- 转存表中的数据 `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `type`, `address`, `phone`, `gender`, `profile_image`) VALUES
 (6, 'Jeremy', 'xiey0017@ntu.edu.sg', '202cb962ac59075b964b07152d234b70', 'doctor', NULL, NULL, 'Male', '1'),
 (7, 'patient', 'xiey0017@gamil.com', '202cb962ac59075b964b07152d234b70', 'patient', 'Singapore, Nanyang Technological University, hall of 13, 64-05-1303', '88888888', 'Male', '1'),
 (10, 'patient2', 'xiey0017@gmail.com', '202cb962ac59075b964b07152d234b70', 'patient', NULL, NULL, 'Male', '0'),
-(12, 'Gina', 'gina@gmail.com', '202cb962ac59075b964b07152d234b70', 'doctor', NULL, NULL, 'Male', '1');
+(12, 'Gina', 'gina@gmail.com', '202cb962ac59075b964b07152d234b70', 'doctor', '32 Nanyang Crescent, 64-05-1303', '99999999', 'Female', '1');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

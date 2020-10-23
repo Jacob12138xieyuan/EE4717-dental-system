@@ -14,7 +14,7 @@
 
 if (isset($_POST['date_hidden'])) {
     $date = $_POST['date_hidden'];
-    $query = "SELECT * FROM calendar_6 WHERE calendar_date='$date';";
+    $query = "SELECT * FROM calendar_{$_SESSION['doctor_id']} WHERE calendar_date='$date';";
     $results = mysqli_query($db, $query);
     $timeslots = array_slice(mysqli_fetch_assoc($results), 1);
     function is_zero($var)
