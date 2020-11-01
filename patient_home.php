@@ -197,7 +197,7 @@
             <div class="column" style="margin-left: 13%;">
 
                 <div class="card">
-                    <a href="dental_history.php"><img style="width: 100%;" src="images/history" alt=""></a>
+                    <a href="dental_history.php"><img style="width: 100%;" src="images/history.jpg" alt=""></a>
                     <h3>Our History</h3>
                     <p>Our dental centre was opened in December 2009, at City Square Mall. With a built-in area of approximately 12,000 sq ft, it has 32-treatment rooms. It is fully equipped with the latest in dental technology.</p>
                 </div>
@@ -205,7 +205,7 @@
             <div class="column">
 
                 <div class="card">
-                    <a href="dental_services.php"><img style="width: 100%;" src="images/services" alt=""></a>
+                    <a href="dental_services.php"><img style="width: 100%;" src="images/services.jpg" alt=""></a>
                     <h3>Our Services</h3>
                     <p>We provides multidisciplinary specialist care for complex dental conditions. Our services encompass oral and maxillofacial surgery, orthodontics, prosthodontics, endodontics, periodontics, and paediatric dentistry.</p>
                 </div>
@@ -213,7 +213,7 @@
             <div class="column">
 
                 <div class="card">
-                    <a href="dental_doctors.php"><img style="width: 100%;" src="images/doctors" alt=""></a>
+                    <a href="dental_doctors.php"><img style="width: 100%;" src="images/doctors.jpg" alt=""></a>
                     <h3>Our doctors</h3>
                     <p>To assist and facilitate our dentists in their continuous efforts in keeping abreast with the latest technology and evidence-based practice, by engaging them with workshops, seminars and conferences; and</p>
                 </div>

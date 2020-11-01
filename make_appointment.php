@@ -22,7 +22,6 @@
         td {
             border: 1px solid black;
             border-collapse: collapse;
-
         }
 
         th,
@@ -120,7 +119,6 @@
     <?php
     echo "<form id='update_date' action='make_appointment.php?doctor_id=" . $doctor_id . "' method='post' style='display:none;''>";
     ?>
-
     <input type="date" id="date_hidden" name="date_hidden">
     </form>
 </body>

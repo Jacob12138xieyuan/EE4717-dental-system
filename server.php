@@ -222,3 +222,34 @@ if (isset($_POST['upload_image'])) {
         header('location: account.php');
     }
 }
+
+//toggle availability
+if (isset($_GET['toggle'])) {
+
+    //get date and timeslot
+    $doctor_id = $_SESSION["id"];
+    $date = $_SESSION["date"];
+    $timeslot = $_GET['toggle'];
+    //update doctor calendar information
+    $query = "SELECT * FROM `calendar_{$doctor_id}` WHERE `calendar_date` = '$date';";
+    $results = mysqli_query($db, $query);
+    if (mysqli_num_rows($results) == 1) {
+        $status = mysqli_fetch_assoc($results)["$timeslot"];
+        if ($status == '2') {
+            $_SESSION["$timeslot"] = 0;
+        } else if ($status == '0') {
+            $_SESSION["$timeslot"] = 2;
+        } else if ($status == '1') {
+            header('location: index.php');
+        }
+    }
+    if ($status == '2') {
+        $query = "UPDATE `calendar_{$doctor_id}` SET `$timeslot`='0' WHERE `calendar_date` = '$date';";
+    } else if ($status == '0') {
+        $query = "UPDATE `calendar_{$doctor_id}` SET `$timeslot`='2' WHERE `calendar_date` = '$date';";
+    }
+    mysqli_query($db, $query);
+    var_dump($errors);
+    //redirect user
+    header('location: index.php');
+}
