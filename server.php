@@ -12,7 +12,7 @@ $password = "";
 $errors = array();
 
 //connect to db
-$db = mysqli_connect('localhost', 'root', '', 'f35ee') or die("could not connect to db");
+$db = mysqli_connect('localhost', 'f35ee', 'f35ee', 'f35ee') or die("could not connect to db");
 // $db = mysqli_connect('localhost', 'f35ee', 'f35ee', 'f35ee') or die("could not connect to db");
 
 //register new users

@@ -69,6 +69,9 @@
         }
         //only show available timeslots
         $timeslots = array_filter($timeslots, "is_zero");
+        if (count($cars)){
+            echo "<script>alert('All timeslots are full! Please choose another date.')</script>"
+        }
     }
 
     ?>
