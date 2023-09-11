@@ -13,20 +13,31 @@ https://www.wampserver.com/en/
 
 ### 2. Download all files of this repo and unzip to WAMP 'www' folder
 
-For example: E:\wamp64\www\dental
+For example: E:\wamp64\www\EE4717-dental-system
 
 ### 3. Import data into 'phpmyadmin'
 
-Go to 'http://localhost/phpmyadmin/', username is 'root', password is empty. On the left side create new database name as 'dental', and import data by selecting 'database/dental' file in 'dental' folder. You should see blow:
+Go to 'http://localhost/phpmyadmin/', username is 'root', password is empty. On the left side create new database name as 'dental', and import data by selecting 'database/dental.sql' file in 'dental' folder. You should see blow:
 
 ![2](https://user-images.githubusercontent.com/37478093/93093580-6d451e00-f6d3-11ea-966e-24863a177de6.png)
 ![3](https://user-images.githubusercontent.com/37478093/93093581-6d451e00-f6d3-11ea-8ca0-e630ba1d4b1c.png)
 
 ### 4. Open webpage form http://localhost/
 
-Click 'dental' folder under 'Your Projects', you should see a log in page. You can log in as patient: username: patient, password: 123 or log in as doctor: username: doctor, password: 123, otherwise, you can sign up as a new user. After log in as normal, you should see:
+Click 'EE4717-dental-system' link under 'Your Projects', you should see a login page. You can login as patient: username: Jacob12138, password: 123 or log in as doctor: username: Jeremy, password: 123, otherwise, you can sign up as a new user. 
 
+After log in as patient, you should see:
+Main page:
+![text](./images/page.jpeg)
+Doctors page:
+![text](./images/doctors.jpeg)
+Patient information page:
+![text](./images/myinfo.jpeg)
 
+After log in as doctor, you should see:
+Main page:
+![text](./images/doctor-page.jpeg)
+Doctor appointment page:
+![text](./images/doctor-appointment.jpeg)
 
-log in as admin, you should see:
 

@@ -12,8 +12,8 @@ $password = "";
 $errors = array();
 
 //connect to db
-$db = mysqli_connect('localhost', 'f35ee', 'f35ee', 'f35ee') or die("could not connect to db");
-// $db = mysqli_connect('localhost', 'f35ee', 'f35ee', 'f35ee') or die("could not connect to db");
+$db = mysqli_connect('localhost', 'root', '', 'dental') or die("could not connect to db");
+// $db = mysqli_connect('localhost', 'root', 'root', 'root') or die("could not connect to db");
 
 //register new users
 if (isset($_POST['register_user'])) {
@@ -128,13 +128,13 @@ if (isset($_POST['submit_appointment'])) {
     $date = mysqli_real_escape_string($db, $_POST['date']);
     $timeslot = mysqli_real_escape_string($db, $_POST['timeslot']);
     $description = mysqli_real_escape_string($db, $_POST['description']);
-    // $to = 'f35ee@localhost';
+    // $to = 'root@localhost';
     // $subject = 'dental appointment';
     // $massage = ' Your have made an appointment';
-    // $headers = 'From: f35ee@localhost' . "\r\n" .
-    //     'Reply-To:f35ee@localhost' . "\r\n" .
+    // $headers = 'From: root@localhost' . "\r\n" .
+    //     'Reply-To:root@localhost' . "\r\n" .
     //     'X-Mailer: PHP/' . phpversion();
-    // mail($to, $subject, $massage, $headers, '-f35ee@localhost');
+    // mail($to, $subject, $massage, $headers, '-root@localhost');
     // echo ("mail send to:" . $to);
 
     $doctor_id = $_SESSION['doctor_id'];

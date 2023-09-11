@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- 数据库: `f35ee`
+-- 数据库: `root`
 --
 
 -- --------------------------------------------------------
@@ -177,29 +177,6 @@ INSERT INTO `calendar_2` (`calendar_date`, `9:00-10:00`, `10:00-11:00`, `11:00-1
 
 -- --------------------------------------------------------
 
---
--- 表的结构 `coffee_prices`
---
-
-CREATE TABLE IF NOT EXISTS `coffee_prices` (
-  `coffee_id` int(11) NOT NULL,
-  `coffee_name` varchar(20) NOT NULL,
-  `coffee_price` float NOT NULL,
-  PRIMARY KEY (`coffee_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `coffee_prices`
---
-
-INSERT INTO `coffee_prices` (`coffee_id`, `coffee_name`, `coffee_price`) VALUES
-(1, 'java', 2),
-(2, 'lait_single', 3),
-(3, 'lait_double', 4),
-(4, 'iced_single', 4.75),
-(5, 'iced_double', 5.75);
-
--- --------------------------------------------------------
 
 --
 -- 表的结构 `users`
